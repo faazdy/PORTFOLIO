@@ -24,3 +24,21 @@ darkTheme.addEventListener('change', function(){
     }
 });
 
+//scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const enlacesHeader = document.querySelectorAll('header a');
+    enlacesHeader.forEach(enlace => {
+        enlace.addEventListener('click', function(event) {
+            event.preventDefault(); // Evita que el enlace siga el href #
+
+            const targetId = this.getAttribute('href'); // Obtiene el ID del destino del enlace
+            const targetElement = document.querySelector(targetId); // Selecciona el elemento destino
+
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' }); // Hace scroll suavemente hacia el elemento destino
+            }
+        });
+    });
+});
+
+
