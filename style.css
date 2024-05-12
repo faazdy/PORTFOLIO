@@ -17,21 +17,21 @@
     font-family: 'Poppins', sans-serif;
 }
 body{
-    background-image: url(imgs/BGMINIMALIST.png);
+    background-image: url(imgs/BGMINIMALIST-Dark.png);
     background-position: top;
-    backdrop-filter: blur(2px);
 }
 
 header{
     position: sticky;
     top: 0;
+    z-index: 1;
 }
 header nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 1em;
-    margin: 3px auto;
+    margin: 5px auto;
     border-radius: 20px;
     width: 90%;
     z-index: 1;
@@ -56,10 +56,44 @@ ul a{
 }
 li:hover a{
     color: var(--red2);
-    border-bottom: 2px solid;
+    
 }
-.intro{
-    color: var(--black1);
+#burger{
+    display: none;
+}
+.menu-burger{
+    display: none;
+}
+.menu-burger img{
+    width: 50px;
+    cursor: pointer;
+}
+.menu-burger .menu-ops{
+    display: none;
+
+    background-color: var(--cardcolor1);
+    padding: 1em;
+    text-align: center;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    width: 50%;
+    z-index: 2;
+}
+.menu-ops li{
+    list-style: none;
+    margin: 1em 0;
+    padding: 1em;
+}
+.menu-ops li:hover{
+    background-color: #464545;
+}
+#burger:checked + .menu-ops{
+    display: block;
+    animation: menuIn .3s;
+}
+#intro{
+    color: white;
     padding: 5em;
     min-height: 100vh;
 
@@ -67,16 +101,20 @@ li:hover a{
     flex-direction: column;
     justify-content: center;
     
-    text-shadow: 0px 0px 1px black;
+    text-shadow: 0px 0px 4px black;
 }
-.intro h1{
+
+.intro-dark {
+    color: var(--black2) !important;
+}
+#intro h1{
     font-size: 70px;
 }
-.intro h1 span{
+#intro h1 span{
     color: var(--red2);
     text-shadow: 1px 1px 4px black;
 }
-.intro h2{
+#intro h2{
     font-size: 40px;
     text-shadow: 0px 1px 1px var(--red1);
 }
@@ -100,11 +138,14 @@ main{
     color: var(--bgcolor);
 }
 
-.light-theme{
-    color: var(--black2);
-    background-color: var(--cardcolor2);
+.dark-theme-body{
+    background-image: url(imgs/BGMINIMALIST.png);
+    background-position: top;
 }
-
+.dark-theme-main{
+    background-color: var(--cardcolor2);
+    color: var(--black1)
+}
 
 .h2-title{
     font-size: 40px;
@@ -167,6 +208,7 @@ main{
     transform: scale(1.02);
     background-position: top;
     transition: .3s ease;
+    z-index: 0;
 }
 .card:hover .info{
     background-color: rgba(0, 0, 0, 0.726);
@@ -203,12 +245,14 @@ main{
     font-size: 15px;
 }
 .st-card{
-    background-color: var(--cardcolor1);
+    background-color: #0b090a17;
     padding: 1em;
     border-radius: 10px;
+    flex: 10%;
 }
 .st-card:hover{
-    background-color: #d904275b;
+    background-color: #3a0001;
+    color: white;
     transition: .2s ease-in-out;
     transform: translateY(-2px);
 }
@@ -221,7 +265,7 @@ hr{
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background-color: var(--cardcolor1);
+    background-color: rgba(0, 0, 0, 0.267);
     padding: .5em 1em;
     margin: 2em 0;
     border-radius: 10px;
@@ -321,11 +365,28 @@ footer{
     height: 0;
   }
 @media screen and (max-width: 900px) {
-    .intro{
+    .menu-burger{
+        display: block;
+    }
+    .nav-tags{
+        display: none;
+    }
+    #intro{
         align-items: center;
         text-align: center;
     }
     .projects{
         flex-direction: column;
+    }
+}
+@keyframes menuIn{
+    from{
+        opacity: 0;
+        transform: scale(0.2);
+        transform: translateX(300px);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
     }
 }
